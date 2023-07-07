@@ -1,8 +1,11 @@
-const container = document.getElementById("container")
+//template string/literals
 
-container.innerHTML = "<button id='buyme'>BUY!</button>"
-const id = document.getElementById("buyme")
-id.addEventListener("click",function(){
-    container.innerHTML += "<p>Thank you for Buying!!</p>"
-})
+const recipient = "James"
+const sender = "Souvik"
 
+
+const email = `Hey ${recipient}!
+How is it going?
+Cheers ${sender}`
+
+console.log(email)
