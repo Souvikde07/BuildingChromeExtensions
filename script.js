@@ -1,13 +1,14 @@
-const inputBtn = document.getElementById("input-btn")
 let myLeads = []
+const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 
-
 inputBtn.addEventListener("click",function(){
     myLeads.push(inputEl.value)
-    renderLeads()
     inputEl.value = ""
+    localStorage.setItem("myLeads",JSON.stringify(myLeads)) 
+    renderLeads()
+    console.log(localStorage.getItem("myLeads"))
 })
 
 function renderLeads(){
@@ -20,7 +21,7 @@ function renderLeads(){
                         ${myLeads[i]}
                         </a>
                     </li>
-        `
+        `//This makes it a string literal or template strings
     }
     ulEl.innerHTML = listItems
 }
