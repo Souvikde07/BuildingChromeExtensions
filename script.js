@@ -3,25 +3,39 @@ const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 const deletebtn = document.getElementById("delete-btn")
-
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-    console.log(leadsFromLocalStorage)
+
 if(leadsFromLocalStorage){
     myLeads = leadsFromLocalStorage
-    renderLeads()
+    render(myLeads)
+}
+
+function render(Leads){
+    let listItems = ""
+    for(let i = 0;i<Leads.length;i++){
+       // listItems += "<li><a href = ' "+myLeads[i]+" 'target = '_blank'>" + myLeads[i] + "</a></li>"
+       listItems += `
+                    <li>
+                        <a href = '${Leads[i]}' target = '_blank'>
+                        ${Leads[i]}
+                        </a>
+                    </li>
+        `//This makes it a string literal or template strings
+    }
+    ulEl.innerHTML = listItems
 }
 
 deletebtn.addEventListener("dblclick", function(){
     localStorage.clear()
     myLeads = []
-    renderLeads()
+    render(myLeads)
 })
 
 function handleClick(){
     myLeads.push(inputEl.value)
     inputEl.value = ""
     localStorage.setItem("myLeads",JSON.stringify(myLeads))
-    renderLeads()
+    render(myLeads)
     console.log(localStorage.getItem("myLeads"))
 }
 
@@ -31,18 +45,3 @@ inputEl.addEventListener('keypress',function(event){
         handleClick()
     }
 })
-
-function renderLeads(){
-    let listItems = ""
-    for(let i = 0;i<myLeads.length;i++){
-       // listItems += "<li><a href = ' "+myLeads[i]+" 'target = '_blank'>" + myLeads[i] + "</a></li>"
-       listItems += `
-                    <li>
-                        <a href = '${myLeads[i]}' target = '_blank'>
-                        ${myLeads[i]}
-                        </a>
-                    </li>
-        `//This makes it a string literal or template strings
-    }
-    ulEl.innerHTML = listItems
-}
