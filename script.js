@@ -10,14 +10,14 @@ if(leadsFromLocalStorage){
     render(myLeads)
 }
 
-function render(Leads){
+function render(leads){
     let listItems = ""
     for(let i = 0;i<Leads.length;i++){
        // listItems += "<li><a href = ' "+myLeads[i]+" 'target = '_blank'>" + myLeads[i] + "</a></li>"
        listItems += `
                     <li>
-                        <a href = '${Leads[i]}' target = '_blank'>
-                        ${Leads[i]}
+                        <a href = '${leads[i]}' target = '_blank'>
+                        ${leads[i]}
                         </a>
                     </li>
         `//This makes it a string literal or template strings
